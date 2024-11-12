@@ -1,3 +1,4 @@
+import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../zustand/useConversation";
 
 const Conversation = ({conversation,lastIdx,emoji}) => {
@@ -5,7 +6,7 @@ const Conversation = ({conversation,lastIdx,emoji}) => {
 	const {selectedConversation, setSelectedConversation} = useConversation();
 	const isSelected=selectedConversation?._id===conversation?._id;
 
-
+	const {authUser} = useAuthContext();
 	return (
 		<>
 			<div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer ${isSelected && "bg-sky-500"}`} onClick={(e)=>setSelectedConversation(conversation)}>
